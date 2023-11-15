@@ -1,28 +1,12 @@
 import './App.css';
 
 function App() {
+  const age = 20;
   return (
     <div className="App">
-      <About name= "Rodica" surname="Negura" age={32} ocupation= "WebDeveloper"/>
-      <br></br>
-      <About name= "Bogdan" surname="Negura" age={33} ocupation= "WebDeveloper"/>
-      <br></br>
-      <About name= "Iasmina" surname="Negura" age={7} ocupation= "bebeWebDeveloper"/>
-      <br></br>
-      <About name= "Damian" surname="Negura" age={5} ocupation= "bebeWebDeveloper"/>
+      { age >= 18 ? <h1>Over Age</h1> : <h1>Under Age</h1>}
     </div>
   );
-}
-
-const About = ({name, surname, age, ocupation}) => {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <h2>{surname}</h2>
-      <h1>{age}</h1>
-      <h3>{ocupation}</h3>
-    </div>
-  )
 }
 
 export default App;
