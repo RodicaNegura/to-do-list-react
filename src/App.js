@@ -1,14 +1,25 @@
 import './App.css';
+import {Car} from '../src/Car';
 
 function App() {
-  const age = 20;
-  const isGreen = true;
+  const cars = [
+    {name: "Volkswagen", cp: 190 }, 
+    {name: "Volvo", cp: 178}, 
+    {name: "Audi", cp: 189}, 
+    {name: "Skoda", cp: 160}, 
+    {name: "BMW", cp:190},
+  ];
+  
   return (
     <div className="App">
-      { age >= 18 ? <h1>Over Age</h1> : <h1>Under Age</h1>}
-      <h1 style={{ color: isGreen ? "green" :  "red"}}> This Has Color</h1>
+      {cars.map((car, key) => {
+        return (
+          < Car name={car.name} cp={car.cp}/>
+        )
+      })}
     </div>
   );
 }
+
 
 export default App;
