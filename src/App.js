@@ -1,33 +1,31 @@
 import './App.css';
-// import {Car} from '../src/Car';
 import { useState } from 'react';
 
 function App() {
- const [count, setCount] = useState(0);
+ 
+    const [todoList, setTodoList] = useState([]);
+    const [newTask, setNewTask] = useState(""); 
 
- const increase = () => {
-  setCount(count + 1);
- }
- 
- const setToZero = () => {
-  setCount(0);
- }
- 
- const decrease = () => {
-  setCount(count - 1);
- }
- 
+    const handleChange = (event) => {
+      setNewTask(event.target.value);
+    };
+    
+    const addTask = () => {
+      setTodoList([...todoList, newTask]);
+    };
 
   return (
     <div className="App">
-      {/* <button onClick={() => setCount(count + 1)}> Increase </button>
-      <button onClick={() => setCount(count - 1)}> Decrease </button>
-      <button  onClick={() => setCount(0)}> Set To Zero </button> */}
+      <div className='addTask'>
+        <input onChange={handleChange}/>
+        <button onClick={addTask}>Add Task</button>
+      </div>
+      <div className='list'>
+        {todoList.map((task) => {
+          return <h1>{task}</h1>
+        })}
+      </div>
       
-      <button onClick={increase}>Increase</button>
-      <button onClick={setToZero}>Set To Zero</button>
-      <button onClick={decrease}>Decrease</button>
-      {count}
     </div>
   );
 }
