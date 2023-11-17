@@ -5,13 +5,33 @@ function App() {
  
     const [todoList, setTodoList] = useState([]);
     const [newTask, setNewTask] = useState(""); 
+  
 
     const handleChange = (event) => {
       setNewTask(event.target.value);
     };
     
     const addTask = () => {
-      setTodoList([...todoList, newTask]);
+      const task = {
+        id: todoList.length === 0 ? 1 : todoList[todoList.length - 1].id + 1,
+        taskName: newTask,
+      }
+      setTodoList([...todoList, task]);
+    };
+
+    const deleteTask = (id) => {
+      // const newTodoList = todoList.filter((task) => {
+      //   // if (task === taskName) {
+      //   //   return false
+      //   // } else {
+      //   //   return true
+      //   // }
+      //   return task !== taskName;
+      // });
+
+      // all this can be write like down below
+      
+      setTodoList(todoList.filter((task) => task.id !== id));
     };
 
   return (
@@ -22,10 +42,14 @@ function App() {
       </div>
       <div className='list'>
         {todoList.map((task) => {
-          return <h1>{task}</h1>
-        })}
-      </div>
-      
+          return( 
+            <div> 
+              <h1>{task.taskName}</h1> 
+              <button onClick={() => deleteTask(task.id)}>X</button>
+            </div> 
+          )
+       })}
+      </div>    
     </div>
   );
 }
