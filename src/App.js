@@ -1,26 +1,23 @@
+import React from 'react';
 import './App.css';
-import React, { useState } from 'react';
-import Axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
-  const [generatedExcuse, setGenaratedExcuse] = useState("");
-
-  const fetchGeneratedExcuse = (excuse) => {
-    Axios.get(`https://excuser-three.vercel.app/v1/excuse/${excuse}/`).then((response) => {
-      setGenaratedExcuse(response.data[0].excuse);
-    });
-  }
+import Home from "./pages/home"
+import Menu from './pages/menu';
+import Contacts from './pages/contacts';
+ 
+const  App = () => {
   return  ( 
     <div className='App'>
-      <h1> Generate A Excuse </h1>
-      <button onClick={() => fetchGeneratedExcuse("family")}> Family </button>
-      <br></br>
-      <button onClick={() => fetchGeneratedExcuse("children")}> Children </button>
-      <br></br>
-      <button onClick={() => fetchGeneratedExcuse("party")}> Party </button>
-      <p>{generatedExcuse}</p>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/menu' element={<Menu/>}/>
+          <Route path='/contacts' element={<Contacts />}/>
+        </Routes>
+      </Router>
     </div>
-  )
+  );
 }
 
 export default App;
