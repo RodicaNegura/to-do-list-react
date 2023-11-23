@@ -11,7 +11,14 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 
 const  App = () => {
-  const client = new QueryClient();
+  const client = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false, // used to not updated data when you move the pages
+      },
+    },
+    
+  });
   return  ( 
     <div className='App'>
       <QueryClientProvider client={client}>
