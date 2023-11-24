@@ -1,18 +1,15 @@
 import './App.css';
-import React, { useState } from 'react';
+import React from "react";
+import { useToggle } from "../src/pages/useToggle"
 // import Form from './pages/form';
 
-
-
 const  App = () => {
-
-  const [ isVisible, setIsVisible ] = useState(false);
+  const [isVisible, toggle] = useToggle()
+  
 
   return  (  
     <div className='App'>
-      <button onClick={() => setIsVisible((prev) => !prev)}>
-        {isVisible ? "Hide" : "Show"}
-      </button>
+      <button onClick={toggle}>{isVisible ? "Hide" : "Show"}</button>
       {isVisible && <h1> Hidden Text</h1>}
       {/* <Form /> */}
     </div>
