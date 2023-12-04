@@ -1,22 +1,19 @@
 import './App.css';
 import React from "react";
-import { useToggle } from "../src/pages/useToggle"
+// import { useToggle } from "../src/pages/useToggle"
 // import Form from './pages/form';
-import Cat from './pages/cat';
+// import Cat from './pages/cat';
+import useCount from './pages/useCount';
 
 const  App = () => {
-  const [isVisible, toggle] = useToggle();
-  const [isVisible2, toggle2] = useToggle();
-  
-
-  return  (  
+  const { count, increase, decrease, restart } = useCount();
+  return  ( 
+   
     <div className='App'>
-      <button onClick={toggle}>{isVisible ? "Hide" : "Show"}</button>
-      {isVisible && <h1> Hidden Text</h1>}
-      {/* <Form /> */}
-      <button onClick={toggle2}>{isVisible2 ? "Hide" : "Show"}</button>
-      {isVisible2 && <h1> Hidden Text</h1>}
-      {/* <Form /> */}
+      {count}
+      <button onClick={increase}>increase</button>
+      <button onClick={decrease}>decrease</button>
+      <button onClick={restart}>restart</button>
     </div>
   );
 }
