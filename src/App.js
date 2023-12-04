@@ -2,6 +2,7 @@ import './App.css';
 import React from "react";
 import { useToggle } from "../src/pages/useToggle"
 // import Form from './pages/form';
+import Cat from './pages/cat';
 
 const  App = () => {
   const [isVisible, toggle] = useToggle();
